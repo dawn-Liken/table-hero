@@ -2,14 +2,22 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>테이블히어로</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>로그인 하기</title>
+    <meta name="description" content="A minimalist layout for Login pages. Built with Pico CSS." />
+    <link rel="shortcut icon" href="https://picocss.com/favicon.ico" />
+    <link rel="canonical" href="https://picocss.com/examples/sign-in/" />
+
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+
+    <!-- Custom styles for this example -->
+    <link rel="stylesheet" href="custom.css" />
 </head>
 
 <body>
+    <!-- Nav -->
     <div class="container">
         <nav>
             <ul>
@@ -17,31 +25,53 @@
             </ul>
             <ul>
                 <li><a href="index.html">홈으로</a></li>
-                <li><a href="#">컴퍼니</a></li>
+                <li><a href="about.html">컴퍼니</a></li>
                 <li><a href="#">서비스</a></li>
                 <li><a href="#">뉴스</a></li>
                 <li><a href="login.html" role="button">로그인</a></li>
             </ul>
         </nav>
-        <article>
-            <h1>로그인</h1>
-            <h7>아래에서 회원 구분을 선택해주세요.</h7>
-        </article>
-        </details>
-        <article>
-            <div class="grid">
-                <button>
-                    일반 회원
-                </button>
-                <button class="contrast">
-                    사업자 회원
-                </button>
-            </div>
-        </article>
-    </div>
+        <!--nav바 끝-->
+        <!-- ./ Nav -->
 
+        <!-- Main -->
+        <main class="container">
+            <article class="grid">
+                <div>
+                    <hgroup>
+                        <h1>로그인</h1>
+                        <h3>지금 로그인 하고 서비스를 이용하세요.</h3>
+                    </hgroup>
+                    <form>
+                        <input type="text" name="login" placeholder="Login" aria-label="Login" autocomplete="nickname"
+                            required />
+                        <input type="password" name="password" placeholder="Password" aria-label="Password"
+                            autocomplete="current-password" required />
+                        <fieldset>
+                            <label for="remember">
+                                <input type="checkbox" role="switch" id="remember" name="remember" />
+                                Remember me
+                            </label>
+                        </fieldset>
+                        <button type="submit" class="contrast" onclick="event.preventDefault()">Login</button>
+                        <h7>아직 회원이 아니신가요? 지금 <a href="signin.html">회원가입</a> 하세요.</h7>
+                    </form>
+                </div>
+                <div></div>
+            </article>
+        </main>
+        <!-- ./ Main -->
 
+        <!-- Footer -->
+        <footer class="container-fluid">
+            <small>Built with <a href="https://picocss.com" class="secondary">Pico</a> •
+                <a href="https://github.com/picocss/examples/tree/master/v1-sign-in/" class="secondary">Source
+                    code</a></small>
+        </footer>
+        <!-- ./ Footer -->
 
+        <!-- Minimal theme switcher -->
+        <script src="js/minimal-theme-switcher.js"></script>
 </body>
 
 </html>

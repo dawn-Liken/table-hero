@@ -7,23 +7,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>테이블히어로</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-    <link rel="shortcut icon" href="images/logo.png" />
+    <link rel="shortcut icon" href="https://picocss.com/favicon.ico" />
 </head>
 
 <body>
-
+    <!--nav바-->
     <div class="container">
-        <!--nav바-->
         <nav>
             <ul>
-                <a href="index.html"><img src="images/logo.png" style="max-width:125px; height:auto;"></a>
+                <li><strong>테이블히어로</strong></li>
+            </ul>
+            <ul>
+                <li><a href="index.html">홈으로</a></li>
+                <li><a href="about.html">컴퍼니</a></li>
+                <li><a href="#">서비스</a></li>
+                <li><a href="#">뉴스</a></li>
+                <li><a href="login.html" role="button">로그인</a></li>
             </ul>
         </nav>
         <!--nav바 끝-->
         <article>
             <h1>테이블히어로를 소개합니다</h1>
             <div class="grid">
-                <img src="images/img.png" style="max-width:100%; height:auto;"></a>
+                <button>
+                    서비스 체험하기
+                </button>
+            </div>
+        </article>
+        <details>
+            <summary>테이블히어로 당신의 주문을 간편하게 해드립니다.</summary>
+            <p>…</p>
+        </details>
+        <details open>
+            <summary>Accordion 2</summary>
+            <ul>
+                <li>…</li>
+                <li>…</li>
+            </ul>
+        </details>
+        <article>
+            <div class="grid">
+                <button>
+                    일반 회원
+                </button>
+                <button class="contrast">
+                    사업자 회원
+                </button>
             </div>
         </article>
     </div>
