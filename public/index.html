@@ -11,6 +11,34 @@
 </head>
 
 <body>
+    <!-- firebase 사용자 정보 -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js"
+        integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDEMw-7wYBYicc4L8hRPpU83imnQFvmjlE",
+            authDomain: "table-hero-2bcce.firebaseapp.com",
+            databaseURL: "https://table-hero-2bcce-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "table-hero-2bcce",
+            storageBucket: "table-hero-2bcce.appspot.com",
+            messagingSenderId: "12240715883",
+            appId: "1:12240715883:web:3b50f583b94dc6a5a8b12e",
+            measurementId: "G-V6ZQZNM8EE"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <!-- firebase 사용자 정보 끝 -->
 
     <div class="container">
         <!--nav바-->
@@ -23,28 +51,50 @@
         <article>
             <h1>테이블히어로를 소개합니다</h1>
             <div class="grid">
-                <img src="images/img.png" style="max-width:100%; height:auto;"></a>
+                <img src="images/main1.png" style="max-width:100%; height:auto;"></a>
             </div>
         </article>
     </div>
 
+
     <!-- Subscribe -->
     <section aria-label="Subscribe example">
         <div class="container">
-            <article>
-                <hgroup>
-                    <h2>테이블히어로 소식 받아보기</h2>
-                    <h3>서비스가 정식 출시되면 알려드릴게요!</h3>
-                </hgroup>
-                <form class="grid">
-                    <input type="text" id="name" name="name" placeholder="이름" aria-label="name" required />
-                    <input type="email" id="email" name="email" placeholder="메일" aria-label="Email address" required />
-                    <button type="submit" onclick="event.preventDefault()">알림 신청하기</button>
-                </form>
-            </article>
+            <div class="promote">
+                <article>
+                    <hgroup>
+                        <h2>테이블히어로 소식 받아보기</h2>
+                        <h3>서비스가 정식 출시되면 알려드릴게요!</h3>
+                    </hgroup>
+                    <div class="email-receive">
+                        <form class="grid">
+                            <input type="text" id="name" name="name" placeholder="이름" aria-label="name" required />
+                            <input type="email" id="email" name="email" placeholder="E-mail" aria-label="Email address"
+                                required />
+                            <button type="submit" id="send" onclick="event.preventDefault()">알림 신청하기</button>
+                        </form>
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
-    <!-- ./ Subscribe -->
+
+    <script>
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
+
+        $('#send').click(function () {
+            var form = {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                date: new Date()
+            }
+            db.collection('email-received').add(form).then((result) => {
+                alert('감사합니다. 서비스가 정식으로 출시되면, 알림 메일을 보내드릴게요!');
+            })
+        });
+    </script>
 
 
 

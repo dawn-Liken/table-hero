@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>스톡비잼(StockBgm)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/basic.css">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"> <!--브라우저 아이콘-->
+    <meta property="og:image" content="images/mainbnr_01.png"> <!--링크 이미지-->
+    <meta property="og:title" content="스톡비젬(StockBgm)"> <!--링크 타이틀-->
+    <meta property="og:description" content="프리랜서 뮤직 오픈마켓 StockBgm"> <!--링크 세부정보-->
+</head>
+
+<body>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js"
+        integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyC0yKgR3yvA5YMKwCOk_SIQbfDIpyKh20w",
+            authDomain: "stockbgm-c32fb.firebaseapp.com",
+            projectId: "stockbgm-c32fb",
+            storageBucket: "stockbgm-c32fb.appspot.com",
+            messagingSenderId: "406644331721",
+            appId: "1:406644331721:web:fac7736eebed51e9fca918",
+            measurementId: "G-4SPZTKP7YY"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+    </script>
+
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><img src="images/logo.png"></a>
+
+            <div id="nav-name">
+                <strong>
+                    <span class="ms-auto mx-2" id="userName"><a class="navbar-brand"></a></span>
+                </strong>
+            </div>
+
+            <div id="nav-login">
+                <span class="ms-auto mx-2" id="userName"><a class="navbar-brand nav-btn" href="login.html">Log
+                        in</a></span>
+            </div>
+
+            <div id="nav-logout">
+                <span class="ms-auto mx-2" id="userName"><a class="navbar-brand nav-btn" type="submit"
+                        class="btn btn-primary" id="logout">Log out</a></span>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <div id="nav-mypage">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="mypage.html">My page</a>
+                        </li>
+                    </div>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Bgm 마켓
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="market.html">Bgm 마켓</a></li>
+                            <li><a class="dropdown-item" href="used-market.html">중고 Bgm 마켓</a></li>
+                            <li><a class="dropdown-item" href="request-list.html">구매 의뢰 목록</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="buy.html">구매 의뢰하기</a></li>
+                            <li><a class="dropdown-item" href="upload-select.html">판매하기</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nft.html">NFT 보증서 신청</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="d-flex justify-content-center">
+                    <img src="images/mainbnr_01.png" class="d-block w-80" alt="..." width="90%" height="100%">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-flex justify-content-center">
+                    <img src="images/mainbnr_02.png" class="d-block w-80" alt="..." width="90%" height="100%">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-flex justify-content-center">
+                    <img src="images/mainbnr_03.png" class="d-block w-80" alt="..." width="90%" height="100%">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-flex justify-content-center">
+                    <img src="images/mainbnr_04.png" class="d-block w-80" alt="..." width="90%" height="100%">
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+    <div class="promote">
+        <h7>스톡비잼의 소식을 받아보고 싶으시다면?</h7>
+        <div class="email-receive">
+            <input type="email" class="form-control mt-2" id="email" placeholder="이메일을 입력하세요.">
+            <button class="btn btn-danger mt-2" id="send">send</button>
+        </div>
+    </div>
+
+
+    <!-- <div class="main-content">
+        업로드 할 때마다 템플릿 생성되도록 코드 짤 것
+    </div> -->
+
+    <footer>
+        <strong>회사 명.</strong> 던라이큰(dawnliken)
+        <br>
+        <strong>대표자 명.</strong> 이형민, 이호연
+        <br>
+        <strong>사업자등록번호.</strong> 452-49-00739
+        <br>
+        <strong>통신판매업등록번호.</strong> 제 2022-서울송파-1838 호
+        <br>
+        <strong>개인정보관리자.</strong> 이형민
+        <br>
+        <strong>고객센터.</strong> 010-3924-3590
+        <br>
+        <strong>주소.</strong> (05838) 서울특별시 송파구 충민로 66 (문정동, 가든파이브라이프) 영관동 제 6층, Y6130호
+        <br>
+        <strong>연락처.</strong> help.dawnliken@gmail.com
+        <br>
+        <strong>copyright.</strong> 던라이큰(dawnLiken) ALL RIGHTS RESERVED.
+    </footer>
+
+    <script>
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
+
+        $('#send').click(function () {
+            var 저장할거 = {
+                email: $('#email').val(),
+                date: new Date()
+            }
+            db.collection('email-received').add(저장할거).then((result) => {
+                alert('감사합니다. 서비스가 정식으로 출시되면, 알림 메일을 보내드릴게요!');
+            })
+            input.value = null;
+        });
+
+        // // 유저정보 확인
+        // if (localStorage.getItem('user') != null) {
+        //     var 뺀거 = localStorage.getItem('user')
+        //     $('#userName').html(JSON.parse(뺀거).displayName)
+        // }
+
+        // firebase.auth().onAuthStateChanged((user) => {
+        //     if (user) {
+        //         console.log(user.uid)
+        //         console.log(user.displayName)
+        //         localStorage.setItem('user', JSON.stringify(user))
+        //     }
+
+        // })
+
+        $(function () {
+            if (localStorage.getItem('user') != null) {
+                var 뺀거 = localStorage.getItem('user')
+                $('#userName').html(JSON.parse(뺀거).displayName)
+                document.getElementById("nav-login").style.display = "none";
+                document.getElementById("nav-logout").style.display = "";
+                document.getElementById("nav-name").style.display = "";
+                document.getElementById("nav-mypage").style.display = "";
+            } else {//조건 1이 아닐떄
+                document.getElementById("nav-login").style.display = "";
+                document.getElementById("nav-logout").style.display = "none";
+                document.getElementById("nav-name").style.display = "none";
+                document.getElementById("nav-mypage").style.display = "none";
+            }
+        })
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                console.log(user.uid)
+                console.log(user.displayName)
+                localStorage.setItem('user', JSON.stringify(user))
+            }
+
+        })
+
+
+        //로그아웃 코드
+        $('#logout').click(function () {
+            if (!confirm("정말 로그아웃 하시겠습니까?")) {
+                alert("취소했습니다.");
+            } else {
+                firebase.auth().signOut()
+                localStorage.removeItem('user')
+                setTimeout(() => window.location.href = "index.html", 3500);
+                alert('로그아웃을 완료했습니다.');
+            }
+        })
+
+
+        //이메일 수신 양식 엔터키로 전송하기
+        var input = document.getElementById("email");
+
+        input.addEventListener("keypress", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("send").click();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
